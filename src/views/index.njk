@@ -1,0 +1,39 @@
+{% extends './layout.njk' %}
+{% set pageId = 'page-home' %}
+{% block title %}
+  <title>SolidaPonto - Doação Solidária</title>
+{% endblock title %}
+{% block styles %}
+  <link rel="stylesheet" href="/css/home.css"/>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/modal.css">
+{% endblock styles%}
+{% block content %}
+  <div class="content">
+    <header>
+      <img src="/assets/logo.png" class="logo" alt="imagem de logo"/>
+      <a href="/create-point">
+        <span></span>
+        Cadastre e faça sua doação!
+      </a>
+    </header>
+    <main>
+      <h1>Mais praticidade em suas doações!</h1>
+      <p>
+        Vestindo Solidariedade: Dando novo significado às suas roupas não
+                                                utilizadas
+      </p>
+      <a href="#">
+        <span></span>
+        <strong>Pesquisar pontos</strong>
+      </a>
+    </main>
+  </div>
+{% endblock content %}
+{% block modal %}
+  {% include 'partials/modal.njk' %}
+{% endblock modal %}
+{% block scripts %}
+  <script src="./js/index.js"></script>
+{% endblock scripts %}

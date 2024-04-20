@@ -1,0 +1,65 @@
+:root {
+  --title-color: #322153;
+  --primary-color: #f2b940;
+
+  --brand-color: hsl(46, 100%, 50%);
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #f0e7de;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+input {
+  border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Ubuntu, sans-serif;
+  color: var(--title-color);
+}
+
+li {
+  list-style: none;
+}
+
+#page-home header img,
+#create-point header img {
+  width: 190px;
+}
+
+.img-collect {
+  width: 64px;
+  height: 64px;
+}
+
+.logo {
+  width: 190px;
+}

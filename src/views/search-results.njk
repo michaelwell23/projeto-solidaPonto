@@ -1,0 +1,52 @@
+{% extends "layout.njk" %}
+{% block title %}
+  <title>Resultado da Pesquisa</title>
+{% endblock title %}
+{% block styles %}
+  <link rel="stylesheet" href="/css/search-results.css"/>
+  <link rel="stylesheet" href="/css/responsive.css"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+{% endblock styles %}
+{% set pageId = "page-search-results" %}
+{#
+<div id="page-search-results">
+  #}
+{% block content %}
+  {% include "partials/page-header.njk" %}
+  <main>
+    {% if total > 0 %}
+      <h4>
+        <strong>{{ total }} pontos</strong>
+        encontrados
+      </h4>
+      <div class="cards">
+        {% for place in places %}
+          <article class="card">
+            <img class="card__background" src="{{ place.image }}" alt="{{ place.name }}" width="1920" height="2193"/>
+            <div class="card__content | flow">
+              <div class="card__content--container | flow">
+                <h2 class="card__title">{{ place.name }}</h2>
+                <p class="card__description">
+                  Endereço: {{ place.neighborhood }}, Nº {{ place.number_address }}<br/> Cidade / Estado:
+                  {{ place.city }}, {{ place.state }} email: {{ place.email }}
+                  <br>
+                    Cep: {{ place.zip_code }} Telefone: {{ place.phone }}
+                  </p>
+                </div>
+                <div>
+                  {% for item in place.items %}
+                    {% set imageUrl = itemImageUrls[item.number] %} <img src="{{ imageUrl }}" alt="{{ item.name }}" title="{{ item.name }}"/>
+                  {% endfor %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        {% else %}
+          <h4>
+            <strong>Nenhum</strong>
+            local encontrados</h4>
+        {% endif %}
+      </main>
+    {% endblock content %}
+    <script src="./js/itens.array.js"></script>
+  </div>

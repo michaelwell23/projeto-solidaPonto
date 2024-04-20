@@ -1,0 +1,127 @@
+{% extends './layout.njk' %}
+{% set pageId = 'create-point' %}
+{% block title %}
+  <title>Criar Ponto de doação - Doação Solidária</title>
+{% endblock title %}
+{% block styles %}
+  <link rel="stylesheet" href="/css/create-point.css"/>
+  <link rel="stylesheet" href="/css/responsive.css"/>
+{% endblock styles %}
+{% block content %}
+  {% include "./partials/page-header.njk" %}
+  <form action="/save-point" method="POST">
+    <h1>Cadastre um ponto de doação</h1>
+    <fieldset>
+      <legend>
+        <h2>Dados do doador</h2>
+      </legend>
+      <div class="field-group">
+        <div class="field">
+          <label for="name">Nome completo do doador</label>
+          <input type="text" name="name" required/>
+        </div>
+        <div class="field">
+          <label for="name">Imagem do local</label>
+          <input type="url" name="image" placeholder="http://" required/>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" name="email" required/>
+        </div>
+        <div class="field">
+          <label for="phone">Telefone</label>
+          <input type="phone" name="phone" required/>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label for="address">Endereço</label>
+          <input type="text" name="address" required/>
+        </div>
+        <div class="field">
+          <label for="neighborhood">Bairro</label>
+          <input type="text" name="neighborhood" required/>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label for="zip_code">Cep</label>
+          <input type="number" name="zip_code" required/>
+        </div>
+        <div class="field">
+          <label for="number_address">Numero da residência</label>
+          <input type="number" name="number_address" required/>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label for="state">Estado</label>
+          <select name="uf" required>
+            <option value="">Selecione o estado</option>
+          </select>
+          <input type="hidden" name="state"/>
+        </div>
+        <div class="field">
+          <label for="city">cidade</label>
+          <select name="city" disabled required>
+            <option value="">Selecione a cidade</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>
+        <h2>ítem que deseja doar</h2>
+        <span>Selecione um ou mais itens</span>
+      </legend>
+      <div class="items-grid">
+        <li data-id="1">
+          <img class="img-collect" src="/assets/polo.svg" alt="camisetas masculina"/>
+          <span>Camisetas Masculinas</span>
+        </li>
+        <li data-id="2">
+          <img class="img-collect" src="/assets/jeans.svg" alt="calças"/>
+          <span>Calças</span>
+        </li>
+        <li data-id="3">
+          <img class="img-collect" src="/assets/shoes.svg" alt="sapatos masculino"/>
+          <span>Sapatos</span>
+        </li>
+        <li data-id="4">
+          <img class="img-collect" src="/assets/shirt-woman.svg" alt="camisetas feminina"/>
+          <span>Camisetas Femininas</span>
+        </li>
+        <li data-id="5">
+          <img class="img-collect" src="/assets/dress.svg" alt="vestidos"/>
+          <span>Vestidos</span>
+        </li>
+        <li data-id="6">
+          <img class="img-collect" src="/assets/ballet.svg" alt="sapatos feminino"/>
+          <span>Sapatos</span>
+        </li>
+        <li data-id="7">
+          <img class="img-collect" src="/assets/shorts.svg" alt="shorts"/>
+          <span>Shorts</span>
+        </li>
+        <li data-id="8">
+          <img class="img-collect" src="/assets/sneaker.svg" alt="Tênis"/>
+          <span>Tênis</span>
+        </li>
+        <li data-id="9">
+          <img class="img-collect" src="/assets/winter-hat.svg" alt="Acessórios de frio"/>
+          <span>Acessórios para o fio</span>
+        </li>
+      </div>
+      <input type="hidden" name="items"/>
+    </fieldset>
+    <button type="submit">Cadatrar ponto de doação</button>
+  </form>
+</div>
+{% block modal %}
+  {% if saved %}
+    {% include "partials/point-created.njk" %}
+  {% endif %}
+{% endblock modal %}{% endblock content %}{% block scripts %}
+<script src="/js/create-point.js"></script>{% endblock scripts %}
