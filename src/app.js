@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import nunjucks from 'nunjucks';
 
-import axios from 'axios';
+import dataItems from './config/data-items';
 
 import db from './database/db';
 
@@ -82,9 +82,51 @@ app.get('/search', (req, res) => {
         return res.send('Erro no Cadastro!');
       }
 
-      const total = rows.length;
+      // Desestruturando os itens após buscá-los do banco de dados
+      const places = rows.map((row) => {
+        const {
+          image,
+          name,
+          email,
+          phone,
+          address,
+          neighborhood,
+          zip_code,
+          number_address,
+          state,
+          city,
+          items,
+        } = row;
 
-      return res.render('search-results.njk', { places: rows, total: total });
+        // Convertendo a string de itens em um array
+        const itemsArray = items
+          .split(',')
+          .map((item) => parseInt(item.trim()));
+
+        // Verificação e substituição dos valores contidos em "items" pelos IDs correspondentes do array em "dataItems"
+        const updatedItems = itemsArray.map((itemId) => {
+          const item = dataItems.find((item) => item.id === itemId);
+          return { id: itemId, imageUrl: item ? item.imageUrl : null };
+        });
+
+        return {
+          image,
+          name,
+          email,
+          phone,
+          address,
+          neighborhood,
+          zip_code,
+          number_address,
+          state,
+          city,
+          items: updatedItems,
+        };
+      });
+
+      const total = places.length;
+
+      return res.render('search-results.njk', { places, total });
     }
   );
 });
