@@ -27,7 +27,7 @@ Não poderia deixar de mencionar o aspecto visual do SolidaPonto! Investi um tem
 
 Durante o processo de criação, me inspirei em padrões de projeto já existentes, mas dei um toque único e inovador ao SolidaPonto. Adicionei recursos que tornam a experiência do usuário mais fluida e intuitiva, enquanto mantive a simplicidade e eficácia como prioridades.
 
-## 📸 Imagens do
+## 📸 Imagens do Projeto
 
 <h1 align="center">
   <img alt="" title="" src="./public/assets/img-project/img01.png" width="400px" />
